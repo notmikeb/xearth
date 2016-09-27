@@ -44,12 +44,16 @@ XCOMM THIS SOFTWARE.
         DEFINES = 
            SRCS = xearth.c dither.c extarr.c gif.c gifout.c mapdata.c \
                   markers.c ppm.c render.c resources.c scan.c sunpos.c \
-                  x11.c
+                  x11.c font.c png.c bmp.c jpeg.c overlay.c
            OBJS = xearth.o dither.o extarr.o gif.o gifout.o mapdata.o \
                   markers.o ppm.o render.o resources.o scan.o sunpos.o \
-                  x11.o
+                  x11.o font.o png.o bmp.o jpeg.o overlay.o
         DEPLIBS = $(DEPXTOOLLIB) $(DEPXLIB)
 LOCAL_LIBRARIES = $(XTOOLLIB) $(XLIB)
-  SYS_LIBRARIES = -lm
+  SYS_LIBRARIES = -lm -lgd
+
+XCOMM   Generate a xearth jpg and use it as background
+XCOMM   >./xearth -size "2560 1600" -jpg > /tmp/x.jpg 
+XCOMM   
 
 ComplexProgramTarget(xearth)

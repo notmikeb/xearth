@@ -337,7 +337,7 @@ static void process_opts()
   xgamma          = get_float_resource("gamma", "Gamma");
   font_name       = get_string_resource("font", "Font");
   mono            = get_boolean_resource("mono", "Mono");
-  overlayfile     = get_string_resource("overlayfile", "Overlayfile");
+  overlayfile[0]     = get_string_resource("overlayfile", "Overlayfile");
 
   /* various sanity checks on simple resources
    */
@@ -365,8 +365,8 @@ static void process_opts()
     fatal("arg to -term must be between 0 and 100");
   if (xgamma <= 0)
     fatal("arg to -gamma must be positive");
-  if (strcmp(overlayfile, "none") == 0)
-    overlayfile = NULL;
+  if (strcmp(overlayfile[0], "none") == 0)
+    overlayfile[0] = NULL;
 
   /* if we're only rendering once, make sure we don't
    * waste memory by allocating two pixmaps
